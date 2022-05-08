@@ -10,8 +10,10 @@ function App() {
   const [fromCurrency, setFromCurrency] = useState()
   const [toCurrency, setToCurrency] = useState()
   const [exchangeRate, setExchangeRate] = useState()
-  const [amount, setAmount] = useState(27)
+  const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+  const [loading, setLoading] = useState(false)
+
 
   let toAmount, fromAmount 
   if(amountInFromCurrency){
@@ -24,6 +26,7 @@ function App() {
 
 
   useEffect(() => {
+    setLoading(true)
       fetch(URL)
         .then(res => res.json())
         .then(data =>{
@@ -32,8 +35,10 @@ function App() {
           setFromCurrency(data.base_code)
           setToCurrency(firstCurrency)?.toFixed(3)
           setExchangeRate(data.rates[firstCurrency])
-          console.log(data)
+          setLoading(false)
+          
         })
+        .catch(() => console.log("An error ocurred, FIX IT !!!!"))
   }, [])
 
   useEffect(() => {
@@ -60,7 +65,11 @@ function App() {
   return (
     
     <div className="App">
+       {loading &&
+        <p>I'TS LOOOOOOOOOOOOOOOOOOOOADING</p>
+      }
       <div className='container__titte'>
+        
       <h1 className='t-stroke t-shadow'>CURRENCY CONVERTER</h1>
       </div>
       <div className='section__currencies'>
