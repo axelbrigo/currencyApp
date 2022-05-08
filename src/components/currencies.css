@@ -1,0 +1,21 @@
+.section__exchange{
+  text-align: center;
+}
+
+select {
+  background-color: #2E86C1;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+}
+
+input{
+  font-size: 1em;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: -1px 0px 17px 3px rgba(103, 100, 100, 0.86);
+  background-color: #ffffff;
+  padding:10px;
+  width: 50%;
+}
